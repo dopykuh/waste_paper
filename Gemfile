@@ -14,6 +14,7 @@ gem 'uglifier'
 gem 'coffee-rails'
 gem 'therubyracer', platforms: :ruby
 gem 'listen'
+gem 'pry-rails'
 
 gem 'jquery-rails'
 gem 'turbolinks'
