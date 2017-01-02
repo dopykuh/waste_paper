@@ -17,8 +17,26 @@ class Source < ApplicationRecord
 
   def mails flags: %w(UNSEEN)
     mail.search(flags).map do |message_id|
-      Mail.new(mail.fetch(message_id, "RFC822")[0].attr['RFC822'])
+      m = Mail.new(mail.fetch(message_id, "RFC822")[0].attr['RFC822'])
+      block_given? ? yield(m, message_id) : m
     end
+  end
+
+  def entries!
+    processing_dir!
+    mails do |m, message_id|
+      m.attachments.each do |attachment|
+        self.entries << Entry.new(attachment: attachment)
+      end
+      mail.copy(message_id, 'INBOX.Archive')
+      mail.store(message_id, '+FLAGS', [:Deleted])
+    end
+    mail.expunge
+  end
+
+  def processing_dir!
+    return if mail.list('INBOX.', 'Archive')
+    mail.create('INBOX.Archive')
   end
 
   def mail
@@ -27,9 +45,8 @@ class Source < ApplicationRecord
         i = Net::IMAP.new(self.address, self.port, false)
         i.starttls if self.ssl and self.port == 143
         i.authenticate(self.authentication, self.username, self.password) 
-        i.examine('INBOX')
+        i.select('INBOX')
         i
       end
   end
-
 end
