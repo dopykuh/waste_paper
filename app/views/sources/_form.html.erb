@@ -1,0 +1,52 @@
+<%= form_for(source) do |f| %>
+  <% if source.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(source.errors.count, "error") %> prohibited this source from being saved:</h2>
+
+      <ul>
+      <% source.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= f.label :user %>
+    <%= f.text_field :user %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.text_field :password %>
+  </div>
+
+  <div class="field">
+    <%= f.label :port %>
+    <%= f.number_field :port %>
+  </div>
+
+  <div class="field">
+    <%= f.label :authentication %>
+    <%= f.text_field :authentication %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ssl %>
+    <%= f.check_box :ssl %>
+  </div>
+
+  <div class="field">
+    <%= f.label :user_id %>
+    <%= f.text_field :user_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

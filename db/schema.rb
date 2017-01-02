@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170102162455) do
+ActiveRecord::Schema.define(version: 20170102164002) do
+
+  create_table "sources", force: :cascade do |t|
+    t.string   "address"
+    t.string   "user"
+    t.string   "password"
+    t.integer  "port"
+    t.string   "authentication"
+    t.boolean  "ssl"
+    t.integer  "user_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["user_id"], name: "index_sources_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

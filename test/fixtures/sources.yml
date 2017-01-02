@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  address: MyString
+  user: 
+  password: MyString
+  port: 1
+  authentication: MyString
+  ssl: false
+  user: one
+
+two:
+  address: MyString
+  user: 
+  password: MyString
+  port: 1
+  authentication: MyString
+  ssl: false
+  user: two

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @source.address %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @source.user %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @source.password %>
+</p>
+
+<p>
+  <strong>Port:</strong>
+  <%= @source.port %>
+</p>
+
+<p>
+  <strong>Authentication:</strong>
+  <%= @source.authentication %>
+</p>
+
+<p>
+  <strong>Ssl:</strong>
+  <%= @source.ssl %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @source.user %>
+</p>
+
+<%= link_to 'Edit', edit_source_path(@source) %> |
+<%= link_to 'Back', sources_path %>
