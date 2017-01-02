@@ -2,6 +2,7 @@ require 'net/imap'
 
 class Source < ApplicationRecord
   belongs_to :user
+  has_many :entries
 
   validates :username, uniqueness: { case_sensitive: false }
   validates :username, :password, :port, :address, :ssl, presence: true

@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170102164824) do
+ActiveRecord::Schema.define(version: 20170102202101) do
+
+  create_table "entries", force: :cascade do |t|
+    t.integer  "source_id"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["source_id"], name: "index_entries_on_source_id"
+  end
 
   create_table "sources", force: :cascade do |t|
     t.string   "address"
