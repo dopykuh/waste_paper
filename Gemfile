@@ -15,6 +15,7 @@ gem 'coffee-rails'
 gem 'therubyracer', platforms: :ruby
 gem 'listen'
 gem 'pry-rails'
+gem 'mail'
 
 gem 'jquery-rails'
 gem 'turbolinks'
